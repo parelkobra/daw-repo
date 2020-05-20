@@ -1,0 +1,14 @@
+class Usuari
+!!!130555.java!!!	Usuari(in usuari : String, in nom : String, in extensio : int)
+		super();
+		this.usuari = usuari==null?UUNKNOWN:usuari;
+		this.nom = nom==null?NUNKNOWN:nom;
+		this.extensio = extensio<0 || extensio>MAX_EXTENSION?0:extensio;
+		if (next < usuaris.length) {
+			usuaris[next] = this.checkUsuari(usuari);
+			next++;
+		}
+!!!131579.java!!!	esSupervisor() : boolean
+		return false;
+!!!131707.java!!!	esTecnic() : boolean
+		return false;

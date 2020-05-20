@@ -1,0 +1,73 @@
+* {padding: 0px;
+   margin: 0px;
+   box-sizing: border-box;   
+}
+
+html, body {width: 100%;
+            height: 100%;
+}
+
+/* Menu */
+body {background-color: #99bbff}
+
+header h1 {text-align: center;
+font-family: 'Arial', serif;
+font-size: 27px;
+color: #004d99;
+background-color: #4d88ff;
+text-shadow: 2px 1px #737373;}
+
+nav {background-color: #004d99}
+
+nav ul li {display: inline;}
+
+nav ul li a {text-decoration: none;
+color:#004d99;
+background-color: #ffbb33;
+font-size: 1.3em;
+padding: 0px 36px 10px 36px;
+font-family: 'Arial', serif;
+
+margin: 2px;
+position: relative;
+border-radius: 0px 0px 5px 5px;
+text-align: center;
+}
+
+nav ul li a:hover {color: #603200;
+background-color: #ff8300;}
+
+nav ul li a:active {color: #ffffff;
+background-color: #000000;}
+
+
+/* Tabla */
+table {background-color: white;
+position: relative;
+top: 20px;
+margin-left: 150px;
+margin-right: 130px;
+padding: 5px 5px 5px 5px;
+border-radius: 8px 8px 8px 8px;}
+
+th {position: relative;
+left: 350px;
+font-size: 20px;
+padding-top: 5px;
+padding-bottom: 5px;
+text-shadow: 2px 1px #7CFC00;
+}
+
+tr td {border: 1px solid #3aaaf5;
+height: 30px;
+width: 150px;
+font-size: 14px;
+text-align: center;
+}
+
+td#row {background-color: #7CFC00;
+width: 400px;
+border-radius: 5px 5px 5px 5px;
+font-weight:bold;
+text-shadow: 2px 2px 1px #FFFFFF;
+}

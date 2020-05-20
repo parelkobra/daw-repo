@@ -1,0 +1,67 @@
+
+
+<!--Ejercicio: cambia el color de la bola a un color al azar, cada vez que
+golpea una pared.-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brick Breaker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var ballRadius = 10;
+        var x = canvas.width/2;
+        var y = canvas.height-30;
+        var dx = 2;
+        var dy = -2;
+        
+        function drawBall() {           
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+            ctx.fill();
+            ctx.closePath();
+        }
+        
+        //La funcion es llamada en las condiciones de draw() y randomiza 
+        //uno de los colores definidos en la variable 'color' y lo usa 
+        //como fillStyle de la bola.
+        
+        function colorChange() {    
+            var color = '#';
+            var letters = ['FF2F2F','ADFF2F','2FEFFF','C32FFF','FFDC2F','2FFF35','2F4BFF','ED9FDF'];
+            color += letters[Math.floor(Math.random() * letters.length)];
+            ctx.fillStyle = color;
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            
+            if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+                dx = -dx;
+                colorChange();
+            }            
+            if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+                dy = -dy;
+                colorChange();
+            }            
+            
+            x += dx;
+            y += dy;
+        }
+
+        setInterval(draw, 10);
+    </script>
+
+</body>
+</html>

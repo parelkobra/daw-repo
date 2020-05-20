@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Web Solutions Marianao</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet"> 
+    </head>
+    <body>
+        <header>
+            <h1>Web Solutions Marianao</h1>
+            <ul>
+                <a href="main.html" id="emp"><li>L'Empresa</li></a>
+                <a href="reg.html" id="reg"><li>Registre</li></a>
+                <a href="vid.html" id="vid"><li>Vídeo</li></a>
+            </ul>
+        </header>
+        <section class="regi">
+            <form>
+                <h3>Dades de registre</h3>
+                Nom i cognoms <span style="color: #ff005b">*</span><br>
+                <input type="text" name="firstlastname" maxlength="40" placeholder="màxim 40 caràcters" required><br>
+                email <span style="color: #ff005b">*</span><br>
+                <input type="email" name="email" maxlength="60" placeholder="màxim 60 caràcters" required><br>
+                Edad<br>
+                <input type="range" name="edad" min="0" max="125" value="25" onchange="showValue(this.value)"/>
+                <span id="range">25</span><br>
+                <script type="text/javascript">
+                    function showValue(newValue)
+                    {
+                        document.getElementById("range").innerHTML=newValue;
+                    }
+                </script>                    
+                Sistemes operatius que coneguis:<br>
+                <input type="checkbox" value="debian"><img src="./imatges/debian_32.jpg"><br>
+                <input type="checkbox" value="fedora"><img src="./imatges/fedora.jpg"><br>
+                <input type="checkbox" value="ubuntu"><img src="./imatges/logo_ubuntu.jpg"><br>
+                <input type="checkbox" value="suse"><img src="./imatges/suse_32.jpg"><br>
+                <input type="checkbox" value="windows"><img src="./imatges/windows_logo_32.jpg"><br>
+                <br><input type="submit" value="Envia les dades">
+            </form>            
+        </section>
+        <footer>
+            <p>Dissenyat per: Institut Marianao - 2017 &copy;</p>
+        </footer>
+    </body>
+</html>

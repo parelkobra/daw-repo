@@ -1,0 +1,19 @@
+window_sizes 1920 1020 0 1914 968 0
+cleanlooks_style
+diagrams
+  active  classdiagram_ref 128123 // Diagrama_classes
+    1914 968 107 Custom 0 44
+  classdiagram_ref 128251 // Diagrama_classes_simple
+    1563 896 170 A3-Landscape 0 0
+  statediagram_ref 135035 // state dia
+    1674 845 140 A3-Landscape 0 25
+end
+show_stereotypes
+selected attribute_ref 130683 // empresa
+open
+  class_ref 128635 // Tecnic
+  class_ref 129147 // Obertura
+  state_ref 128123 // stat mach
+  deploymentview_ref 128123 // pt1
+end
+end

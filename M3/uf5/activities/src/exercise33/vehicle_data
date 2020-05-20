@@ -1,0 +1,5 @@
+# tipus, matricula, km, es classic? / cilindrada
+moto; 2333-AAA; 10000; 500
+moto; 1111-BBB; 110000; 700
+cotxe; 1111-CCC; 110000; false
+cotxe; 1111-CCC; 110000; true

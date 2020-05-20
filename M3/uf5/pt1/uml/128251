@@ -1,0 +1,36 @@
+format 222
+"dam2" // src::dam2
+  revision 1
+  modified_by 123 "alex"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "/opt/dades/alex/workspace_java/201920_UF4_PT1_TICKETING/src/dam2/"
+  java_package "dam2"
+  package_ref 128379 // m3
+end

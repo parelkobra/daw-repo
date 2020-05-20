@@ -1,0 +1,65 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    border:0;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+    background-color: #98FB98;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+
+input, select {
+    vertical-align:middle;
+}
+
+
+h1 {
+    margin: 40px;
+}
+
+.main{
+    width: 800px;
+    height: 160px;
+    margin: 40px;
+    border: solid 1px black;
+    border-radius: 8px;
+    margin-bottom: 2em;
+    padding: 1.5em;
+}
+
+.chart{
+    width: 400px;
+    height: 400px;
+    margin: 40px;
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 8px;
+    margin-bottom: 2em;
+    padding: 1.5em;
+}
+
+input[type="submit"]{
+    margin-top: 15px;
+}
+
+.box{
+    width: 400px;
+    height: 400px;
+}

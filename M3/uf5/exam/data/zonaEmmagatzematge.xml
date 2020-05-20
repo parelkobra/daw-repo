@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_242" class="java.beans.XMLDecoder">
+ <object class="pe1.uf5.m3.dam2.ZonaEmmagatzematge">
+  <void property="ubicacions">
+   <object class="java.util.TreeSet">
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="containers">
+       <object class="java.util.LinkedList">
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Refrigerat">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-01-24</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>18</int>
+          </void>
+          <void property="identificador">
+           <string>HDMU0000153</string>
+          </void>
+          <void property="maxim">
+           <int>10</int>
+          </void>
+          <void property="origen">
+           <string>Valencia</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-01-23</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>10</int>
+          </void>
+          <void property="identificador">
+           <string>TOLU1234563</string>
+          </void>
+          <void property="origen">
+           <string>Shangai</string>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="columna">
+       <int>1</int>
+      </void>
+      <void property="containers">
+       <object class="java.util.LinkedList">
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-04</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>3</int>
+          </void>
+          <void property="identificador">
+           <string>TOLZ0012032</string>
+          </void>
+          <void property="origen">
+           <string>Anvers</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-04</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>4</int>
+          </void>
+          <void property="identificador">
+           <string>NYKZ0000020</string>
+          </void>
+          <void property="origen">
+           <string>Hong Kong</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-01-23</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>23</int>
+          </void>
+          <void property="identificador">
+           <string>HDMZ0000024</string>
+          </void>
+          <void property="origen">
+           <string>Hong Kong</string>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="columna">
+       <int>2</int>
+      </void>
+      <void property="containers">
+       <object class="java.util.LinkedList">
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-05</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>13</int>
+          </void>
+          <void property="identificador">
+           <string>NYKU0000271</string>
+          </void>
+          <void property="origen">
+           <string>Rotterdam</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-05</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>15</int>
+          </void>
+          <void property="identificador">
+           <string>HDMU0123450</string>
+          </void>
+          <void property="origen">
+           <string>Shangai</string>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="columna">
+       <int>3</int>
+      </void>
+      <void property="containers">
+       <object class="java.util.LinkedList">
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-03</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>28</int>
+          </void>
+          <void property="identificador">
+           <string>TOLZ0045002</string>
+          </void>
+          <void property="origen">
+           <string>Hamburg</string>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="containers">
+       <object class="java.util.LinkedList">
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Refrigerat">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-05</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>12</int>
+          </void>
+          <void property="identificador">
+           <string>NYKZ0000021</string>
+          </void>
+          <void property="maxim">
+           <int>15</int>
+          </void>
+          <void property="origen">
+           <string>Tokio</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Refrigerat">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-04</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>15</int>
+          </void>
+          <void property="identificador">
+           <string>HDMZ0000110</string>
+          </void>
+          <void property="maxim">
+           <int>15</int>
+          </void>
+          <void property="origen">
+           <string>Rotterdam</string>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void property="fila">
+       <int>1</int>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="columna">
+       <int>1</int>
+      </void>
+      <void property="containers">
+       <object class="java.util.LinkedList">
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-01</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>8</int>
+          </void>
+          <void property="identificador">
+           <string>NYKU0000264</string>
+          </void>
+          <void property="origen">
+           <string>Anvers</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="pe1.uf5.m3.dam2.Container">
+          <void property="arribada">
+           <object class="java.time.LocalDate" method="parse">
+            <string>2020-02-04</string>
+           </object>
+          </void>
+          <void property="carrega">
+           <int>6</int>
+          </void>
+          <void property="identificador">
+           <string>HDMZ0101010</string>
+          </void>
+          <void property="origen">
+           <string>Valencia</string>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void property="fila">
+       <int>1</int>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="columna">
+       <int>2</int>
+      </void>
+      <void property="containers">
+       <object class="java.util.LinkedList"/>
+      </void>
+      <void property="fila">
+       <int>1</int>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="pe1.uf5.m3.dam2.Ubicacio">
+      <void property="columna">
+       <int>3</int>
+      </void>
+      <void property="containers">
+       <object class="java.util.LinkedList"/>
+      </void>
+      <void property="fila">
+       <int>1</int>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

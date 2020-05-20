@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src" />
+	<classpathentry kind="con"
+		path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-11.0.6">
+		<attributes>
+			<attribute name="module" value="true" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/commons-lang3-3.1.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="jar:platform:/resource/201819-UF5-FXML/doc/commons-lang3-3.1-javadoc.jar!/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/controlsfx-8.40.14.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="https://controlsfx.bitbucket.io/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/slf4j-api-1.7.25.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="https://www.slf4j.org/apidocs" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/slf4j-nop-1.7.25.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="https://www.slf4j.org/apidocs" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/itext7-io-7.0.5.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="jar:platform:/resource/201819-UF5-FXML/doc/io-7.0.5-javadoc.jar!/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/itext7-kernel-7.0.5.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="jar:platform:/resource/201819-UF5-FXML/doc/kernel-7.0.5-javadoc.jar!/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/itext7-layout-7.0.5.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="jar:platform:/resource/201819-UF5-FXML/doc/layout-7.0.5-javadoc.jar!/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/html2pdf-1.0.2.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="jar:platform:/resource/201819-UF5-FXML/doc/html2pdf-1.0.2-javadoc.jar!/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/commons-text-1.8.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="https://commons.apache.org/proper/commons-text/javadocs/api-release/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib"
+		path="lib/javax.json-1.1.4.jar">
+		<attributes>
+			<attribute name="javadoc_location"
+				value="https://javadoc.io/doc/javax.json/javax.json-api/latest/" />
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con"
+		path="org.eclipse.jdt.USER_LIBRARY/JavaFX-11" />
+	<classpathentry kind="output" path="bin" />
+</classpath>

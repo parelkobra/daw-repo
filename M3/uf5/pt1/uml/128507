@@ -1,0 +1,1676 @@
+format 222
+"pt1" // src::dam2::m3::pt1
+  revision 4
+  modified_by 123 "alex"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "/opt/dades/alex/workspace_java/201920_UF4_PT1_TICKETING/src/dam2/m3/pt1/"
+  java_package "dam2.m3.pt1"
+  classview 128123 "pt1"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 128123 "Accio"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Qualsevol de les operacions de seguiment del tiquet realitzada per un usuari en una data
+
+Durant la creació de l'acció:
+  - Si la data és nul·la indicar la data actual
+  - Podem suposar que l'usuari no serà nul
+  - Podem suposar que el tiquet no serà nul
+
+No es pot actualitzar cap atribut a un valor incorrecte
+
+@author alex
+
+"
+      classrelation 128123 // usuari. (<unidirectional association>)
+	relation 128123 --->
+	  a role_name "usuari." multiplicity "1" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128123 // usuari. (<unidirectional association>)
+	  b parent class_ref 128251 // Usuari
+      end
+
+      attribute 128123 "data"
+	protected explicit_type "Date"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133627 "usuari"
+	protected explicit_type "Usuari"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 128251 // tiquet. (<unidirectional association>)
+	relation 128251 --->
+	  a role_name "tiquet." multiplicity "1" protected
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128251 // tiquet. (<unidirectional association>)
+	  b parent class_ref 128379 // Tiquet
+      end
+
+      attribute 133755 "tiquet"
+	protected explicit_type "Tiquet"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 128123 "Accio"
+	public explicit_return_type ""
+	nparams 3
+	  param inout name "usuari" type class_ref 128251 // Usuari
+	  param inout name "tiquet" type class_ref 128379 // Tiquet
+	  param inout name "data" explicit_type "Date"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 129403 "getPrioritat"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 129531 "resum"
+	abstract public explicit_return_type "String"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128251 "Usuari"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Els noms d'usuari han de ser únics, es manté un registre estàtic dels noms d'usuari utilitzats que només s'ha d'actualitzar cada
+vegada que es crea un nou usuari
+
+Si l'usuari és nul cal canviar-lo per \"johndoe\"
+
+Si el nom de l'usuari és nul canviar-lo per \"JOHN DOE\"
+
+Si l'extensió és negativa o superior a 9999 canviar a 0
+
+En cas de trobar un nom d'usuari existent cal afegir-li un sufix numèric aleatori de 2 dígits
+
+@author alex
+
+"
+      attribute 128891 "MAX_EXTENSIO"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 9999"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129019 "usuaris"
+	class_attribute private explicit_type "String"
+	multiplicity "[]"
+	init_value " new String[SistemaGestio.MAX_USERS]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129275 "usuari"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129403 "nom"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129531 "extensio"
+	protected explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 130555 "Usuari"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "usuari" explicit_type "String"
+	  param in name "nom" explicit_type "String"
+	  param in name "extensio" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 131579 "esSupervisor"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 131707 "esTecnic"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128379 "Tiquet"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Els empleats generen els tiquets indicant mínim una descripció i han d'estar assignats a una de les categories de la llista CATEGORIES.
+
+Durant la creació del tiquet:
+  - Es pot indicar una data o bé assignar-la automàticament al moment del registre
+  - En qualsevol cas cal afegir un  primer registre d'obertura al seguiment.
+  - Si la categoria no es correspon a cap element de la llista assignar a \"Altres\"
+  - Si la descripció és nul·la o és un text buit afegir directament un registre de tancament després de l'obertura
+  - Podem suposar que l'empleat no serà nul
+
+No es pot actualitzar cap atribut a un valor incorrecte
+
+@author alex
+
+"
+      classrelation 129787 // <realization>
+	relation 129787 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129787 // <realization>
+	  b parent class_ref 129275 // Printable
+      end
+
+      attribute 132475 "CATEGORIES"
+	class_attribute const_attribute public explicit_type "String [ ]"
+	multiplicity "1..*"
+	init_value " {\"Maquinari\", \"Programari\", \"Impressi�\", \"Connectivitat\", \"Suport\", \"Altres\"}"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132603 "MAX_ACCIONS"
+	class_attribute const_attribute private explicit_type "int"
+	init_value " 10"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 129915 // empleat. (<unidirectional association>)
+	relation 129915 --->
+	  a role_name "empleat." multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129915 // empleat. (<unidirectional association>)
+	  b parent class_ref 128891 // Empleat
+      end
+
+      attribute 133371 "empleat"
+	private explicit_type "Empleat"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132731 "categoria"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 132859 "descripcio"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 130043 // seguiment. (<unidirectional association>)
+	relation 130043 --->
+	  a role_name "seguiment." multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 130043 // seguiment. (<unidirectional association>)
+	  b parent class_ref 128123 // Accio
+      end
+
+      attribute 133499 "seguiment"
+	private explicit_type "Accio [ ]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 135803 "Tiquet"
+	public explicit_return_type ""
+	nparams 4
+	  param inout name "empleat" type class_ref 128891 // Empleat
+	  param in name "categoria" explicit_type "String"
+	  param in name "descripcio" explicit_type "String"
+	  param inout name "data" explicit_type "Date"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 135931 "Tiquet"
+	public explicit_return_type ""
+	nparams 3
+	  param inout name "empleat" type class_ref 128891 // Empleat
+	  param in name "categoria" explicit_type "String"
+	  param in name "descripcio" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 136955 "getEstat"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Si té un registre de tancament => \"Tancat\"
+
+En cas contrari si té intervencions	=> \"En procés\"
+
+Si està assignat a un tècnic però encara no té intervencions => \"Assignat\"
+
+Si encara no està assignat a cap tècnic  => \"Pendent\"
+
+
+@return
+"
+      end
+
+      operation 137083 "getPrioritat"
+	public explicit_return_type "int"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Obtenir la prioritat a partir de l'assignació del tiquet
+
+Adicionalment cada dos dies des de l'obertura s'incrementa la prioritat inicial al nivell següent fins assolir el nivell màxim
+
+Si el tiquet no està encara assignat la prioritat és 0.
+
+@return
+"
+      end
+
+      operation 137339 "assignacio"
+	public explicit_return_type "String"
+	nparams 4
+	  param inout name "supervisor" type class_ref 128763 // Supervisor
+	  param inout name "data" explicit_type "Date"
+	  param inout name "tecnic" type class_ref 128635 // Tecnic
+	  param in name "prioritat" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Assignació del tiquet per part del supervisor a un dels tècnics indicant una prioritat entre 1 i 9
+
+No es poden assignar tiquets que ja estan assignats o bé tancats
+
+La data ha de ser posterior a la data d'obertura del tiquet
+
+@param supervisor
+@param prioritat
+@param tecnic
+"
+      end
+
+      operation 137467 "intervencio"
+	public explicit_return_type "String"
+	nparams 4
+	  param inout name "tecnic" type class_ref 128635 // Tecnic
+	  param inout name "data" explicit_type "Date"
+	  param in name "hores" explicit_type "int"
+	  param in name "descripcio" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Intervenció d'un dels tècnics per resoldre el tiquet
+
+No es poden fer intervencions si el tiquet està tancat
+
+Per poder resoldre un tiquet cal que estigui assignat, tot i que no necessàriament al tècnic que realitza la intervenció
+
+Les intervencions han de ser posteriors a l'assignació
+
+@param tecnic
+@param data
+@param hores
+@param descripcio
+@return
+"
+      end
+
+      operation 137595 "tancament"
+	public explicit_return_type "String"
+	nparams 2
+	  param inout name "usuari" type class_ref 128251 // Usuari
+	  param inout name "data" explicit_type "Date"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Tancament d'un tiquet
+
+Els tiquets tancats no es poden tornar a tancar, els únics usuaris que poden tramitar el tancament són:
+
+  - L'usuari que ha obert el tiquet i els supervisors poden tancar-lo en qualsevol moment
+  - El tècnic assignat al tiquet només el pot tancar si ell mateix a realitzat alguna intervenció
+
+El tancament ha de ser igual o posterior a qualsevol altre acció del tiquet
+
+@param usuari
+@param data
+@return
+"
+      end
+
+      operation 137723 "assignat"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Fi Operacions
+
+
+
+Està assignat a algun tècnic
+
+@return
+"
+      end
+
+      operation 137851 "intervencions"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Té alguna intervenció
+
+@return
+"
+      end
+
+      operation 137979 "intervencions"
+	public explicit_return_type "boolean"
+	nparams 1
+	  param inout name "usuari" type class_ref 128251 // Usuari
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "L'usuari és tècnic i té intervencions d'aquest usuari
+
+@param usuari
+@return
+"
+      end
+
+      operation 138107 "tancat"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Està tancat
+
+@return
+"
+      end
+
+      operation 138235 "informe"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 138363 "header"
+	class_operation public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 138491 "footer"
+	class_operation public explicit_return_type "String"
+	nparams 4
+	  param in name "pendents" explicit_type "int"
+	  param in name "assignats" explicit_type "int"
+	  param in name "intervinguts" explicit_type "int"
+	  param in name "tancats" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128507 "Assignacio"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Assignació del tiquet per part del supervisor a un tècnic indicant la prioritat corresponent en una determinada data
+
+Durant la creació de l'assignació:
+  - La prioritat ha de tenir un valor entre 1 i 9, si el valor indicat està fora d'aquest rang indicar 1
+  - Podem suposar que el tècnic no serà nul
+
+
+No es pot actualitzar cap atribut a un valor incorrecte
+
+@author alex
+
+"
+      classrelation 128379 // <generalisation>
+	relation 128379 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128379 // <generalisation>
+	  b parent class_ref 128123 // Accio
+      end
+
+      attribute 128251 "MIN_PRIORITAT"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128379 "MAX_PRIORITAT"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 9"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 128507 // tecnic. (<unidirectional association>)
+	relation 128507 --->
+	  a role_name "tecnic." multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128507 // tecnic. (<unidirectional association>)
+	  b parent class_ref 128635 // Tecnic
+      end
+
+      attribute 128507 "prioritat"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 133883 "tecnic"
+	private explicit_type "Tecnic"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 129659 "Assignacio"
+	public explicit_return_type ""
+	nparams 5
+	  param inout name "supervisor" type class_ref 128763 // Supervisor
+	  param inout name "tiquet" type class_ref 128379 // Tiquet
+	  param inout name "data" explicit_type "Date"
+	  param inout name "tecnic" type class_ref 128635 // Tecnic
+	  param in name "prioritat" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128635 "Tecnic"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Si l'empresa és nul·la cal canviar-la per \"\"
+
+@author alex
+
+"
+      classrelation 129403 // <generalisation>
+	relation 129403 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129403 // <generalisation>
+	  b parent class_ref 128251 // Usuari
+      end
+
+      attribute 130683 "empresa"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 134651 "Tecnic"
+	public explicit_return_type ""
+	nparams 4
+	  param in name "usuari" explicit_type "String"
+	  param in name "nom" explicit_type "String"
+	  param in name "extensio" explicit_type "int"
+	  param in name "empresa" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 134779 "getEmpresa"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 134907 "setEmpresa"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "empresa" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 135035 "esTecnic"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128763 "Supervisor"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Tècnic supervisor
+
+@author alex
+
+"
+      classrelation 129531 // <generalisation>
+	relation 129531 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129531 // <generalisation>
+	  b parent class_ref 128635 // Tecnic
+      end
+
+      operation 135163 "Supervisor"
+	public explicit_return_type ""
+	nparams 4
+	  param in name "usuari" explicit_type "String"
+	  param in name "nom" explicit_type "String"
+	  param in name "extensio" explicit_type "int"
+	  param in name "empresa" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 135291 "esSupervisor"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128891 "Empleat"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Si la ubicació o el lloc són nuls cal canviar-ho per \"\"
+
+@author alex
+
+"
+      classrelation 128635 // <generalisation>
+	relation 128635 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128635 // <generalisation>
+	  b parent class_ref 128251 // Usuari
+      end
+
+      attribute 129659 "ubicacio"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129787 "lloc"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 131835 "Empleat"
+	public explicit_return_type ""
+	nparams 5
+	  param in name "usuari" explicit_type "String"
+	  param in name "nom" explicit_type "String"
+	  param in name "extensio" explicit_type "int"
+	  param in name "ubicacio" explicit_type "String"
+	  param in name "lloc" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 131963 "getUbicacio"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 132091 "setUbicacio"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ubicacio" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 132219 "getLloc"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 132347 "setLloc"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "lloc" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 129019 "Intervencio"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Nova intervenció a una determinada data per resoldre el tiquet, indicant les hores dedicades i una breu descripció de l'actuació
+
+Durant la creació de la intervenció:
+  - Les hores han de ser >= 1, en cas contrari indicar 1
+  - Si la descripció és nul·la substituir per un text buit
+
+
+No es pot actualitzar cap atribut a un valor incorrecte
+
+@author alex
+
+"
+      classrelation 128763 // <generalisation>
+	relation 128763 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128763 // <generalisation>
+	  b parent class_ref 128123 // Accio
+      end
+
+      attribute 129915 "hores"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130043 "descripcio"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 132475 "Intervencio"
+	public explicit_return_type ""
+	nparams 5
+	  param inout name "tecnic" type class_ref 128635 // Tecnic
+	  param inout name "tiquet" type class_ref 128379 // Tiquet
+	  param inout name "data" explicit_type "Date"
+	  param in name "hores" explicit_type "int"
+	  param in name "descripcio" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 129147 "Obertura"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Obertura d'un tiquet per un usuari en una determinada data
+
+@author alex
+
+"
+      classrelation 128891 // <generalisation>
+	relation 128891 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128891 // <generalisation>
+	  b parent class_ref 128123 // Accio
+      end
+
+      operation 133371 "Obertura"
+	public explicit_return_type ""
+	nparams 3
+	  param inout name "empleat" explicit_type "Empleat"
+	  param inout name "tiquet" type class_ref 128379 // Tiquet
+	  param inout name "data" explicit_type "Date"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 129275 "Printable"
+      visibility public stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 133627 "informe"
+	public explicit_return_type "String"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 129403 "SistemaGestio"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 129019 // <realization>
+	relation 129019 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129019 // <realization>
+	  b parent class_ref 129275 // Printable
+      end
+
+      attribute 130171 "MAX_USERS"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 10"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 130299 "MAX_TICKETS"
+	class_attribute const_attribute public explicit_type "int"
+	init_value " 10"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 129147 // usuaris. (<unidirectional association>)
+	relation 129147 --->
+	  a role_name "usuaris." multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 129147 // usuaris. (<unidirectional association>)
+	  b parent class_ref 128251 // Usuari
+      end
+
+      attribute 133115 "usuaris"
+	private explicit_type "Usuari [ ]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 129275 // incidencies. (<unidirectional association>)
+	relation 129275 --->
+	  a role_name "incidencies." multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 129275 // incidencies. (<unidirectional association>)
+	  b parent class_ref 128379 // Tiquet
+      end
+
+      attribute 133243 "incidencies"
+	private explicit_type "Tiquet [ ]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 133755 "SistemaGestio"
+	public explicit_return_type ""
+	nparams 0
+	nexceptions 1
+	  explicit_exception "ParseException"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 133883 "nouUsuari"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "usuari" type class_ref 128251 // Usuari
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 134011 "nouTiquet"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "tiquet" type class_ref 128379 // Tiquet
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 134139 "informe"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 134267 "getTotalByEstat"
+	public explicit_return_type "int"
+	nparams 1
+	  param in name "estat" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Obté el total de tiquets en un cert estat
+
+@param estat
+@return
+"
+      end
+
+      operation 134395 "init"
+	private explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "ParseException"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 134523 "main"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param inout name "args" explicit_type "String"
+	multiplicity "[]"
+	nexceptions 1
+	  explicit_exception "ParseException"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0}[] ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 129531 "Tancament"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Tancament del tiquet per part d'un usuari a una determinada data
+
+@author alex
+
+"
+      classrelation 129659 // <generalisation>
+	relation 129659 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129659 // <generalisation>
+	  b parent class_ref 128123 // Accio
+      end
+
+      operation 135419 "Tancament"
+	public explicit_return_type ""
+	nparams 3
+	  param inout name "usuari" type class_ref 128251 // Usuari
+	  param inout name "tiquet" type class_ref 128379 // Tiquet
+	  param inout name "data" explicit_type "Date"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    classdiagram 128123 "Diagrama_classes"
+      classdiagramsettings draw_all_relations no hide_operations no hide_getset_operations no hide_ports no show_members_full_definition yes show_members_visibility yes show_members_stereotype no show_members_multiplicity no show_members_initialization yes show_attribute_modifiers no member_max_width 0 show_parameter_dir no show_parameter_name yes class_drawing_mode class drawing_language uml show_context_mode no show_relation_modifiers yes show_relation_visibility yes shadow yes gradient none show_stereotype_properties no end
+      class_color lightyellow 
+      size 1900x800
+    end
+
+    classdiagram 128251 "Diagrama_classes_simple"
+      classdiagramsettings draw_all_relations no hide_attributes yes hide_operations yes hide_getset_operations no hide_ports no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 0 show_parameter_dir no show_parameter_name no package_name_in_tab no class_drawing_mode class drawing_language uml show_context_mode no auto_label_position no show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes show_stereotype_properties no end
+      size A3-Landscape
+    end
+
+    state 128123 "stat mach"
+      stereotype "machine"
+      statediagram 135035 "state dia"
+	statediagramsettings show_trans_definition no draw_all_relations no shadow yes
+	 show_activities yes drawing_language uml end
+	size A3-Landscape
+      end
+
+      pseudostate 128123 final 
+      end
+
+      pseudostate 128251 initial 
+	transition 128763 "obertura"
+	  on pseudostate_ref 128379 // choice
+	  external 
+	end
+      end
+
+      state 128251 "Pendent"
+	transition 129019 "assignaci�"
+	  on state_ref 128379 // Assignat
+	  external 
+	end
+      end
+
+      state 128379 "Assignat"
+	transition 129531 "intervenci�"
+	  on state_ref 128507 // En proc�s
+	  external 
+	end
+      end
+
+      state 128507 "En proc�s"
+	transition 129403 "tancament"
+	  on state_ref 128635 // Tancat
+	  external 
+	end
+
+	transition 129659 "intervenci�"
+	  on state_ref 128507 // En proc�s
+	end
+      end
+
+      state 128635 "Tancat"
+	transition 128251 "<transition>"
+	  on pseudostate_ref 128123 // final
+	  external 
+	end
+      end
+
+      pseudostate 128379 choice 
+	transition 128635 "Manca descripci�"
+	  on state_ref 128635 // Tancat
+	  comment "	"
+	  external 
+	end
+
+	transition 128891 "<transition>"
+	  on state_ref 128251 // Pendent
+	  external 
+	end
+      end
+
+      pseudostate 128507 entry_point "creaci� d'un tiquet"
+	transition 129275 "<transition>"
+	  on state_ref 128763 // asdas
+	  external 
+	end
+      end
+
+      state 128763 "asdas"
+      end
+    end
+  end
+
+  deploymentview 128123 "pt1"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 128123 "Accio"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.Date;
+${definition}"
+      associated_elems
+	class_ref 128123 // Accio
+      end
+    end
+
+    artifact 128251 "Assignacio"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.Date;
+${definition}"
+      associated_elems
+	class_ref 128507 // Assignacio
+      end
+    end
+
+    artifact 128379 "Usuari"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128251 // Usuari
+      end
+    end
+
+    artifact 128507 "Empleat"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128891 // Empleat
+      end
+    end
+
+    artifact 128635 "Intervencio"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.Date;
+${definition}"
+      associated_elems
+	class_ref 129019 // Intervencio
+      end
+    end
+
+    artifact 128763 "Obertura"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.Date;
+${definition}"
+      associated_elems
+	class_ref 129147 // Obertura
+      end
+    end
+
+    artifact 128891 "Printable"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 129275 // Printable
+      end
+    end
+
+    artifact 129019 "SistemaGestio"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+${definition}"
+      associated_elems
+	class_ref 129403 // SistemaGestio
+      end
+    end
+
+    artifact 129147 "Tecnic"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128635 // Tecnic
+      end
+    end
+
+    artifact 129275 "Supervisor"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_elems
+	class_ref 128763 // Supervisor
+      end
+    end
+
+    artifact 129403 "Tancament"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.Date;
+${definition}"
+      associated_elems
+	class_ref 129531 // Tancament
+      end
+    end
+
+    artifact 129531 "Tiquet"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.WordUtils;
+${definition}"
+      associated_elems
+	class_ref 128379 // Tiquet
+      end
+    end
+  end
+end

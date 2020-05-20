@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane prefHeight="540.0" prefWidth="800.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="m3.uf5.ticketing.ControllerIncidenciesHistoric">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="title" text="històric d'incidències" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+            <HBox layoutX="725.9000244140625" layoutY="16.899999618530273" spacing="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <Button fx:id="btnPDF" mnemonicParsing="false" onAction="#generarPDFClick" styleClass="icon-button" text="PDF" />
+               </children>
+            </HBox>
+            <GridPane hgap="20.0" layoutX="-72.0" layoutY="35.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="80.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" />
+                  <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label styleClass="etiquetes" text="Obertura des de" />
+                  <DatePicker fx:id="dateDesde" GridPane.columnIndex="1" />
+                  <Label layoutX="10.0" layoutY="16.0" styleClass="etiquetes" text="Fins" GridPane.columnIndex="2" />
+                  <DatePicker fx:id="dateFins" layoutX="88.0" layoutY="12.0" GridPane.columnIndex="3" />
+                  <Button fx:id="btnFiltrar" mnemonicParsing="false" onAction="#filtrarClick" text="Filtrar" GridPane.columnIndex="4" />
+               </children>
+            </GridPane>
+            <ScrollPane fitToWidth="true" layoutX="19.0" layoutY="139.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="140.0">
+               <content>
+                  <Label fx:id="lblInforme" alignment="TOP_LEFT" styleClass="text-consola" text="Label" wrapText="true" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

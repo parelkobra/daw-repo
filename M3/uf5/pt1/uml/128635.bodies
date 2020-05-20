@@ -1,0 +1,11 @@
+class Tecnic
+!!!134651.java!!!	Tecnic(in usuari : String, in nom : String, in extensio : int, in empresa : String)
+		super(usuari, nom, extensio);
+		this.empresa = empresa==null?"":empresa;
+!!!134779.java!!!	getEmpresa() : String
+		return empresa;
+!!!134907.java!!!	setEmpresa(in empresa : String) : void
+		if (empresa == null) return;
+		this.empresa = empresa;
+!!!135035.java!!!	esTecnic() : boolean
+		return true;

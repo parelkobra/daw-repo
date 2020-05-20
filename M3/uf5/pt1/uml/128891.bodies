@@ -1,0 +1,15 @@
+class Empleat
+!!!131835.java!!!	Empleat(in usuari : String, in nom : String, in extensio : int, in ubicacio : String, in lloc : String)
+		super(usuari, nom, extensio);
+		this.ubicacio = ubicacio==null?"":ubicacio;
+		this.lloc = lloc==null?"":lloc;
+!!!131963.java!!!	getUbicacio() : String
+		return ubicacio;
+!!!132091.java!!!	setUbicacio(in ubicacio : String) : void
+		if (ubicacio == null) return;
+		this.ubicacio = ubicacio;
+!!!132219.java!!!	getLloc() : String
+		return lloc;
+!!!132347.java!!!	setLloc(in lloc : String) : void
+		if (lloc == null) return;
+		this.lloc = lloc;

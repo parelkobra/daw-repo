@@ -1,0 +1,95 @@
+class SistemaGestio
+!!!133755.java!!!	SistemaGestio()
+		this.usuaris = new Usuari[MAX_USERS];
+		this.incidencies = new Tiquet[MAX_TICKETS];
+		this.nextu = 0;
+		this.nexti = 0;
+		this.init();
+!!!133883.java!!!	nouUsuari(inout usuari : Usuari) : void
+		if (usuari == null || nextu >= this.usuaris.length) return;
+
+		this.usuaris[this.nextu] = usuari;
+		this.nextu++;
+!!!134011.java!!!	nouTiquet(inout tiquet : Tiquet) : void
+		if (tiquet == null || nexti >= this.incidencies.length) return;
+
+		this.incidencies[this.nexti] = tiquet;
+		this.nexti++;
+!!!134139.java!!!	informe() : String
+		String informe = "";
+		informe += Tiquet.header();
+		for (Tiquet tiquet : incidencies) {
+			if (tiquet != null) {
+				informe += tiquet.informe();
+			}
+		}
+		informe += Tiquet.footer(getTotalByEstat(Tiquet.PENDENT),
+								 getTotalByEstat(Tiquet.ASSIGNAT),
+								 getTotalByEstat(Tiquet.EN_PROCES),
+								 getTotalByEstat(Tiquet.TANCAT));
+		return informe;
+!!!134267.java!!!	getTotalByEstat(in estat : String) : int
+		if (estat == null) return 0;
+		int total = 0;
+
+		for (Tiquet tiquet : incidencies) {
+			if (tiquet != null && estat.equals(tiquet.getEstat())) total++;
+		}
+		return total;
+!!!134395.java!!!	init() : void
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",new Locale("CA","ES"));
+
+		Empleat e1 = new Empleat("alex", "Alex Macia Perez", 3515, "Sala SATURN", "L15");
+		Empleat e2 = new Empleat("maria", "Maria Lopez i Castells", 3513, "Sala SATURN", "L13");
+		Empleat e3 = new Empleat("lola", "Lola Valls i Vilalta", 2501, "Sala VENUS", "L01");
+		Empleat e4 = new Empleat("toni", "Antoni Bosc i Cases", 2508, "Sala VENUS", "L08");
+
+		Tecnic tec1 = new Tecnic("raul", "Raul Casanova i Ferrer", 1504, "T-SYSTEMS");
+		Tecnic tec2 = new Tecnic("genis", "Genís Esteve i Prats", 1515, "INET");
+
+		Supervisor s1 = new Supervisor("laia", "Laia Vives i Marsans", 1501, "INET");
+
+		this.nouUsuari(e1);
+		this.nouUsuari(e2);
+		this.nouUsuari(e3);
+		this.nouUsuari(e4);
+
+		this.nouUsuari(tec1);
+		this.nouUsuari(tec2);
+
+		this.nouUsuari(s1);
+
+		Tiquet t1 = new Tiquet(e1, "Maquinari", "El ratolí no funciona bé, a vegades desapareix o no es mou. "
+				+ "A més sovint he de posar un paper a sota. Ho podeu revisar. Gràcies", sdf.parse("01/10/2019"));
+
+		t1.assignacio(s1, sdf.parse("02/10/2019"), tec1, 4);
+		t1.intervencio(tec1, sdf.parse("04/10/2019"), 2, "És un ratolí inalàmbric, les piles estaven gastades. "
+				+ "S'han substituït però segueix sense funcionar bé del tot. Cal canviar el ratolí.");
+		t1.intervencio(tec2, sdf.parse("05/10/2019"), 1, "Ratolí inalàmbric canviat per model USB.");
+		t1.tancament(tec1, sdf.parse("05/10/2019"));
+
+		Tiquet t2 = new Tiquet(e3, "Connectivitat", "Internet funciona molt lent, fent servir el navegador Firefox "
+				+ "les pàgines triguen molt a carregar-se i s'obren finestres emergents de propaganda. "
+				+ "He provat d'instal·lar Chrome però em demana la contrasenya d'administrador. "
+				+ "Necessito una solució urgentment!!!", sdf.parse("24/09/2019"));
+
+		t2.assignacio(s1, sdf.parse("26/09/2019"), tec2, 9);
+		t2.intervencio(tec2, sdf.parse("26/09/2019"), 4, "Google Chrome instal·lat. Firefox actualitzat i restablert "
+				+ "a la configuració de fàbrica, l'ordinador està ple de virus. S'ha actualitzat l'antivirus, un escaneig complet "
+				+ "en profunditat i programació d'una tasca per automatitzar un escaneig dos cops per setmana (dilluns i dijous al migdia)");
+
+		Tiquet t3 = new Tiquet(e2, "Suport", "Estic intentant fer el desglossament de l'IVA pels apunts importats al "
+				+ "programa de comptabilitat però no me'n surto. Necessito un cop de ma perquè la propera setmana "
+				+ "ve l'auditor. Gràcies", sdf.parse("24/09/2019"));
+
+		Tiquet t4 = new Tiquet(e4, "Impressió", "No puc imprimir a doble cara a la impressora de la Sala VENUS. "
+				+ "Tot i que marco l'opció abans d'enviar a imprimir documents,no surten a doble cara ", sdf.parse("27/09/2019"));
+		t4.assignacio(s1, sdf.parse("29/09/2019"), tec1, 3);
+
+		this.nouTiquet(t1);
+		this.nouTiquet(t2);
+		this.nouTiquet(t3);
+		this.nouTiquet(t4);
+!!!134523.java!!!	main(inout args : String [[]]) : void
+		SistemaGestio sistema = new SistemaGestio();
+		System.out.println(sistema.informe());

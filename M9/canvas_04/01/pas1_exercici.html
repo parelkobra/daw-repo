@@ -1,0 +1,42 @@
+
+
+<!--Ejercicio: cambia el tamaño y el color de las figuras.-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brick Breaker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+</head>
+<body>
+    
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+    
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        
+        ctx.beginPath();
+        ctx.rect(0, 0, 120, 120);
+        ctx.fillStyle = "#FF00FF";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.arc(70, 200, 60, 0, Math.PI*2, false);
+        ctx.fillStyle = "#00FFFF";
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.rect(230, 200, 200, 20);
+        ctx.strokeStyle = "rgba(0, 255, 0, 1)";
+        ctx.stroke();
+        ctx.closePath();
+    </script>
+    
+</body>
+</html>

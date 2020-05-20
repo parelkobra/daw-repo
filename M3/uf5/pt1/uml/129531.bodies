@@ -1,0 +1,3 @@
+class Tancament
+!!!135419.java!!!	Tancament(inout usuari : Usuari, inout tiquet : Tiquet, inout data : Date)
+		super(usuari, tiquet, data);

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>M9 UF2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            canvas { border:1px solid black; }
+        </style>
+    </head>
+    <body onload="canvasExercice();">
+        <canvas id="lienzo1" width="100" height="100">Su navegador no soporta canvas :( </canvas>
+        <canvas id="lienzo2" width="100" height="100">Su navegador no soporta canvas :( </canvas>
+        <canvas id="lienzo3" width="100" height="100">Su navegador no soporta canvas :( </canvas>
+        <canvas id="lienzo4" width="100" height="100">Su navegador no soporta canvas :( </canvas>
+        <script>
+            
+            //star(canvas, x del centro, y del centro, radio, numero de puntos, fracció del radi per insercio)
+            
+            star1(50, 50, 35, 5, 0.4);
+            star2(50, 50, 35, 5, 0.4);
+            star3(50, 50, 35, 5, 0.4);
+            star4(50, 50, 35, 5, 0.4);
+
+            function star1(x, y, r, p, m) {
+                var canvas = document.getElementById('lienzo1');
+                var ctx = canvas.getContext('2d');
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.translate(x, y);
+                ctx.moveTo(0,0-r);
+                for (var i = 0; i < p; i++)
+                {
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - (r*m));
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - r);
+                }
+                ctx.fill();
+            }
+            
+            function star2(x, y, r, p, m) {
+                var canvas = document.getElementById('lienzo2');
+                var ctx = canvas.getContext('2d');
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.translate(x, y);
+                ctx.moveTo(0,0-r);
+                for (var i = 0; i < p; i++)
+                {
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - (r*m));
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - r);
+                }
+                ctx.closePath();
+                ctx.fillStyle = '#990000';
+                ctx.fill();
+            }
+            
+            function star3(x, y, r, p, m) {
+                var canvas = document.getElementById('lienzo3');
+                var ctx = canvas.getContext('2d');
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.translate(x, y);
+                ctx.moveTo(0,0-r);
+                for (var i = 0; i < p -1; i++)
+                {
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - (r*m));
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - r);
+                }
+                ctx.stroke();
+            }
+            
+            function star4(x, y, r, p, m) {
+                var canvas = document.getElementById('lienzo4');
+                var ctx = canvas.getContext('2d');
+                
+                ctx.save();
+                ctx.beginPath();
+                ctx.translate(x, y);
+                ctx.moveTo(0,0-r);
+                for (var i = 0; i < p; i++)
+                {
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - (r*m));
+                    ctx.rotate(Math.PI / p);
+                    ctx.lineTo(0, 0 - r);
+                }
+                ctx.strokeStyle = '#990000';
+                ctx.closePath();
+                ctx.stroke();
+            }    
+        </script>
+    </body>
+</html>

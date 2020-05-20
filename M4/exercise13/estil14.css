@@ -1,0 +1,44 @@
+* {padding: 0px;
+   margin: 0px;
+   box-sizing: border-box;   
+}
+
+html, body {width: 100%;
+            height: 100%;
+}
+
+/* CSS del menu */
+body {background-color: #FFFFFF;}
+
+header h1 {text-align: center;
+           font-family: 'Roboto Slab', serif;
+           color: #006A55;
+           background-color: #16A085;
+           text-shadow: 2px 2px 1px #FFFFFF;    
+}
+
+nav {background-color: #3FD13F;}
+
+nav ul li {display: inline;}
+
+nav ul li a {text-decoration: none;
+color: #006A55;
+background-color: #16A085;
+font-size: 1.3em;
+padding: 0px 36px 10px 36px;
+
+margin: 2px;
+position: relative;
+top: -2px;
+
+border-radius: 0px 0px 8px 8px;
+text-shadow: 2px 2px 1px #FFFFFF;
+text-align: center;
+}
+
+nav ul li a:hover {color: #000000;
+background-color: #67DE67;
+text-shadow: 2px 2px 1px #FA2222;
+text-align: center;
+box-shadow: 2px 2px 4px #000000;
+}

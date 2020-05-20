@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Encuesta con AJAX</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="StyleSheet" href="estilos.css" type="text/css" />
+    <script type="text/javascript" src="Chart.js"></script>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="funciones.js"></script>
+  </head>
+  <body>
+    <h1>Implementación de una encuesta empleando AJAX:</h1>
+    <div class="main">
+      <form action="pagina1.php" method="get" id="formulario">
+        <h2>
+          Que lenguaje utiliza para la implementación de páginas dinámicas?
+        </h2>
+        <div id="encuesta">
+          <input type="radio" id="radio1" name="radio" />PHP<br />
+          <input type="radio" id="radio2" name="radio" />ASP<br />
+          <input type="radio" id="radio3" name="radio" />JSP<br />
+          <input type="submit" value="Enviar" id="enviar" />
+        </div>
+      </form>
+    </div>
+    <div id="resultados" class="box"></div>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+
+
+<!-- Ejercicio: intenta cambiar la velocidad de la bola en movimiento o la
+dirección hacia la que se mueve. -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brick Breaker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var x = canvas.width/2;
+        var y = canvas.height-30;
+        var dx = -1;    /*He cambiado la variable para que vaya en la 
+                        direccion contraria*/
+        var dy = -2;
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI*2);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            x += dx;
+            y += dy;
+        }
+
+        setInterval(draw, 80); /*He cambiado el valor al que se volvera a 
+                                dibujar la bola. Ahora se dibujara cada 
+                                50 milisegundos*/
+    </script>
+
+</body>
+</html>

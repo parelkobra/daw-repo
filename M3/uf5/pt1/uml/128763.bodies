@@ -1,0 +1,5 @@
+class Supervisor
+!!!135163.java!!!	Supervisor(in usuari : String, in nom : String, in extensio : int, in empresa : String)
+		super(usuari, nom, extensio, empresa);
+!!!135291.java!!!	esSupervisor() : boolean
+		return true;

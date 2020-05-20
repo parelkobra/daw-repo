@@ -1,0 +1,35 @@
+format 222
+"src" // src
+  revision 1
+  modified_by 123 "alex"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "/opt/dades/alex/workspace_java/201920_UF4_PT1_TICKETING/src/"
+  package_ref 128251 // dam2
+end

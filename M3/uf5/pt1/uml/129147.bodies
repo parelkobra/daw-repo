@@ -1,0 +1,3 @@
+class Obertura
+!!!133371.java!!!	Obertura(inout usuari : Usuari, inout tiquet : Tiquet, inout data : Date)
+		super(usuari, tiquet, data);

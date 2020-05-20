@@ -1,0 +1,8 @@
+class Accio
+!!!128123.java!!!	Accio(inout usuari : Usuari, inout tiquet : Tiquet, inout data : Date)
+		super();
+		this.usuari = usuari;
+		this.tiquet = tiquet;
+		this.data = data==null?new Date():data;
+!!!129403.java!!!	getPrioritat() : int
+		return 0;

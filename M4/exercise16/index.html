@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ca">
+    <head>
+        <meta charset="UTF-8">
+        <title>Desenvolupament Orientat a Objectes</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>UML<span>Desenvolupament Orientat a Objectes.</span></h1>
+        </header>
+        <section>
+            <nav>
+                <ul class='menu'>
+                    <a href="#primer_salto"><li>Diagrama de classes.</li></a>
+                    <a href="#segundo_salto"><li>Diagrama d'Estat.</li></a>
+                    <a href="#tercer_salto"><li>Diagrama de casos d'ús</li></a>
+                </ul>
+            </nav>
+            <article>
+                <p>
+                UML (llenguatge unificat de modelatge) és una eina que permet als analistes
+                de sistemes, generar dissenys que capturen les seves idees de manera convencional 
+                i comunicar-les a altres persones. Els seus creadors són Grady Booch, James Rumbaugh
+                i Ivar Jacobson, apodats "Els tres amics".
+                </p>
+                <a name="primer_salto">
+                <h3>Diagrames de Classes:</h3>
+                <p>
+                Una classe és una categoria o grup de coses que tenen atributs i accions similars. 
+                Per exemple:  si considerem la classe "Rentadora", aquesta té atributs com son la 
+                marca, la serie i la capacitat de càrrega. Entre les accions d'aquesta classe tenim 
+                "afegir roba", "afegir detergent", "possar en ON", etc. A sota tenim una representació 
+                d'una classe "Rentadora".
+                </p>
+                <img src="img/classe.png">
+                <a name="segundo_salto">
+                <h3>Diagrames de Estat:</h3>
+                <p>
+                En qualsevol moment, un objecte es troba en un estat particular. Així, el nostre exemple 
+                de la rentadora, aquesta pot estar en l'estat de rentar, centrifugant, apagada, etc. El 
+                diagrama d'estats UML captura aquesta xi coteta realitat. El símbol de la part superior de
+                la figura de sota, representa l'estat inicial i el de la part inferior l'estat final.
+                </p>
+                <img src="img/estats.png">
+                <a name="tercer_salto">
+                <h3>Diagrames de Casos d'us:</h3>
+                <p>
+                Descriuen les accions des de'l punt de vista de l'usuari. A la figura corresponent a 
+                l'usuari de la rentadora l'anomenem "Actor" i la elipse representa el cas d'us. El actor 
+                (es a dir, la persona que inicia el cas d'us) pot ser una persona o un altra màquina.
+                </p>
+                <img src="img/cas_us.png">
+            </article>
+        </section>
+        
+    </body>

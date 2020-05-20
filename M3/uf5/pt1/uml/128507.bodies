@@ -1,0 +1,5 @@
+class Assignacio
+!!!129659.java!!!	Assignacio(inout supervisor : Supervisor, inout tiquet : Tiquet, inout data : Date, inout tecnic : Tecnic, in prioritat : int)
+		super(supervisor, tiquet, data);
+		this.tecnic = tecnic;
+		this.prioritat = prioritat<MIN_PRIORITAT || prioritat>MAX_PRIORITAT?MIN_PRIORITAT:prioritat;

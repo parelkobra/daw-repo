@@ -1,0 +1,90 @@
+format 222
+
+pseudostatecanvas 128123 pseudostate_ref 128123 // final
+   xyz 1064.1 369.9 2000
+end
+pseudostatecanvas 128251 pseudostate_ref 128251 // initial
+   xyz 537.5 184.1 2000
+end
+statecanvas 128379 state_ref 128251 // Pendent
+  
+  xyzwh 684.5 210.9 2000 78 45
+end
+statecanvas 128763 state_ref 128379 // Assignat
+  
+  xyzwh 853.6 211.8 2006 95 42
+end
+statecanvas 128891 state_ref 128507 // En procés
+  
+  xyzwh 1035.8 208.7 2000 78 47
+end
+statecanvas 129019 state_ref 128635 // Tancat
+  
+  xyzwh 1040.3 301.4 2000 72 45
+end
+pseudostatecanvas 129531 pseudostate_ref 128379 // choice
+   xyz 596.4 213.6 2000
+end
+fragment 130555 "Resolució d'un tiquet"
+  color white xyzwh 516.5 154.1 1995 646 249
+end
+pseudostatecanvas 130683 pseudostate_ref 128507 // entry_point
+   xyz 454.4 190.5 3005 label_xy 427 207
+end
+statecanvas 133371 state_ref 128763 // asdas
+  
+  xyzwh 516.7 196.2 1990 81 41
+end
+transitioncanvas 129147 transition_ref 128251 // <transition>
+  decenter_begin 491
+  
+  from ref 129019 z 2001 to ref 128123
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 129787 transition_ref 128635 // Manca descripció
+  
+  from ref 129531 z 2001 label "Manca descripció" xyz 613 281.5 3000 to point 604 320.9
+  line 129915 z 2001 to ref 129019
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 130043 transition_ref 128763 // obertura
+  
+  from ref 128251 z 2001 label "obertura" xyz 607 190.5 3000 to ref 129531
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 130171 transition_ref 128891 // <transition>
+  
+  from ref 129531 z 2001 to ref 128379
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 130299 transition_ref 129019 // assignació
+  
+  from ref 128379 z 2007 label "assignació" xyz 782 213 2007 to ref 128763
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 133755 transition_ref 129403 // tancament
+  
+  from ref 128891 z 2001 label "tancament" xyz 1027.5 268 3000 to ref 129019
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 133883 transition_ref 129531 // intervenció
+  
+  from ref 128763 z 2007 label "intervenció" xyz 964.5 214.5 2007 to ref 128891
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 134011 transition_ref 129659 // intervenció
+  decenter_begin 278
+  
+  from ref 128891 z 2001 label "intervenció" xyz 1102.5 157.5 3000 to point 1128.5 217.6
+  line 134395 z 2001 to point 1128.9 167.5
+  line 134139 z 2001 to point 1070.8 167.5
+  line 134267 z 2001 to ref 128891
+  write_horizontally default show_definition default drawing_language default
+end
+transitioncanvas 134779 transition_ref 129275 // <transition>
+  decenter_end 106
+  
+  from ref 130683 z 3006 to ref 133371
+  write_horizontally default show_definition default drawing_language default
+end
+end

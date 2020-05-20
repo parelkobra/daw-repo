@@ -1,0 +1,226 @@
+class Tiquet
+!!!135803.java!!!	Tiquet(inout empleat : Empleat, in categoria : String, in descripcio : String, inout data : Date)
+		super();
+		this.empleat = empleat;
+		this.categoria = this.checkCategoria(categoria);
+		this.descripcio = descripcio==null?"":descripcio.trim();
+		this.next = 0;
+		this.obertura(empleat, data);
+		if ("".equals(this.descripcio)) {
+			// Tancar incidència sense descripció
+			this.tancament(empleat, data);
+		}
+!!!135931.java!!!	Tiquet(inout empleat : Empleat, in categoria : String, in descripcio : String)
+		super();
+		this.empleat = empleat;
+		this.categoria = this.checkCategoria(categoria);
+		this.descripcio = descripcio==null?"":descripcio.trim();
+		this.next = 0;
+		this.obertura(empleat, new Date());
+		if ("".equals(this.descripcio)) {
+			// Tancar incidència sense descripció
+			this.tancament(empleat, new Date());
+		}
+!!!136955.java!!!	getEstat() : String
+		if (this.tancat()) return TANCAT;
+
+		if (this.intervencions()) return EN_PROCES;
+
+		if (this.assignat()) return ASSIGNAT;
+
+		return PENDENT;
+!!!137083.java!!!	getPrioritat() : int
+		if (!this.assignat()) return 0;
+
+		// Si està assignat serà la segona acció
+		int prioritat = seguiment[1].getPrioritat();
+		long dies = Math.abs(Duration.between(seguiment[1].getData().toInstant(), new Date().toInstant()).toDays());
+
+		return Math.min(Assignacio.MAX_PRIORITAT, prioritat + (int) dies/2);
+!!!137339.java!!!	assignacio(inout supervisor : Supervisor, inout data : Date, inout tecnic : Tecnic, in prioritat : int) : String
+		if (supervisor == null) return "Cal indicar el supervisor responsable de l'assignació";
+
+		if (tecnic == null) return "Cal indicar el tècnic assignat a la intervenció";
+
+		if (this.assignat() || this.tancat()) return "No es poden assignar tiquets que ja estan assignats o bé tancats";
+
+		Calendar calCreacio = Calendar.getInstance(new Locale("ca-ES"));
+		calCreacio.setTime(seguiment[0].getData());
+
+		if (seguiment[0].getData().after(data==null?new Date():data)) return "L'assignació no pot ser anterior a l'obertura del tiquet";
+
+		this.seguiment[this.next] = new Assignacio(supervisor, this, data, tecnic, prioritat);
+		this.next++;
+
+		return "";
+!!!137467.java!!!	intervencio(inout tecnic : Tecnic, inout data : Date, in hores : int, in descripcio : String) : String
+		if (tecnic == null) return "Cal indicar el tècnic que realitza la intervenció";
+
+		if (this.tancat()) return "Aquest tiquet està tancat i no es poden afegir noves intervencions";
+
+		if (!this.assignat()) return "Cal assignar el tiquet a algun tècnic per poder iniciar les intervencions";
+
+		if (seguiment[1].getData().after(data==null?new Date():data)) return "La intervenció no pot ser anterior a l'assignació del tiquet";
+
+		this.seguiment[this.next] = new Intervencio(tecnic, this, data, hores, descripcio);
+		this.next++;
+
+		return "";
+!!!137595.java!!!	tancament(inout usuari : Usuari, inout data : Date) : String
+		if (usuari == null) return "Cal indicar l'usuari que tanca el tiquet";
+
+		if (this.tancat()) return "Aquest tiquet ja es troba tancat";
+
+		if ( ( this.getEmpleat() != null || this.getEmpleat().equals(usuari) )   &&
+				!usuari.esSupervisor() &&
+				!this.intervencions(usuari) ) return "Aquest usuari no pot tancar el tiquet";
+
+		for (Accio accio : seguiment) {
+			if (accio != null && accio.getData().after(data==null?new Date():data)) return "El tancament ha de ser la darrera acció del tiquet";
+		}
+
+		this.seguiment[this.next] = new Tancament(usuari, this, data);
+		this.next++;
+
+		return "";
+!!!137723.java!!!	assignat() : boolean
+		for (Accio accio : seguiment) {
+			if (accio != null && accio.esAssignacio()) return true;
+		}
+		return false;
+!!!137851.java!!!	intervencions() : boolean
+		for (Accio accio : seguiment) {
+			if (accio != null && accio.esIntervencio()) return true;
+		}
+		return false;
+!!!137979.java!!!	intervencions(inout usuari : Usuari) : boolean
+		if (!usuari.esTecnic()) return false;
+
+		for (Accio accio : seguiment) {
+			if (accio != null && accio.esIntervencio() && accio.getUsuari().equals(usuari)) return true;
+		}
+		return false;
+!!!138107.java!!!	tancat() : boolean
+		for (Accio accio : seguiment) {
+			if (accio != null && accio.esTancament()) return true;
+		}
+		return false;
+!!!138235.java!!!	informe() : String
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",new Locale("CA","ES"));
+
+		String text = "";
+
+		// Línia 1. Dades
+		text += printIdentEmptyRow(CHR_BORDER);
+		text += "  "+CHR_BORDER;
+		text += StringUtils.center(this.getCategoria().toUpperCase(new Locale("ca-ES")), COL_1)+" "+CHR_BORDER+" ";
+		text += StringUtils.center(sdf.format(seguiment[0].getData()), COL_2)+" "+CHR_BORDER+" ";
+		text += StringUtils.rightPad(StringUtils.abbreviate(this.getEmpleat().getNom(), COL_3 - 7)+" "+(this.getEmpleat().getExtensio()+"").replaceFirst("(\\d{2})(\\d{2})", "(ext. $1 $2)"), COL_3)+" "+CHR_BORDER+" ";
+		text += StringUtils.center(this.getPrioritat()+"", COL_4)+" "+CHR_BORDER+" ";
+		text += StringUtils.leftPad(this.getEstat()+" ", COL_5);
+		text += CHR_BORDER+"  ";
+		text += System.lineSeparator();
+		text += "  "+CHR_BORDER;
+		text += StringUtils.repeat(" ", COL_1)+" "+CHR_BORDER+" ";
+		text += StringUtils.repeat(" ", COL_2)+" "+CHR_BORDER+" ";
+		text += StringUtils.rightPad(StringUtils.abbreviate(this.getEmpleat().getUbicacio()+", "+this.getEmpleat().getLloc(), COL_3), COL_3)+" "+CHR_BORDER+" ";
+		text += StringUtils.repeat(" ", COL_4)+" "+CHR_BORDER+" ";
+		text += StringUtils.repeat(" ", COL_5)+" "+CHR_BORDER+" ";
+		text += System.lineSeparator();
+
+		text += printIdentEmptyRow(CHR_BORDER);
+
+		// Línia 2 a ?. Descripció
+		text += printIdentSeparatorRow(CHR_BORDER);
+		text += printIdentSeparatorRow(" ");
+		String descWrapped = WordUtils.wrap(this.getDescripcio(), COL_2+COL_3+COL_4+COL_5+3*GAP, "%%", true);
+		String[] descArray = descWrapped.split("%%");
+		for (int i = 0; i < descArray.length; i++) {
+			descArray[i] = "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1)+" "+CHR_BORDER+" "+StringUtils.rightPad(descArray[i],COL_2+COL_3+COL_4+COL_5+3*GAP)+CHR_BORDER+"  ";
+		}
+		descWrapped = StringUtils.join(descArray, System.lineSeparator());
+		text += descWrapped;
+		text += System.lineSeparator();
+
+		// Seguiment. Saltar obertura, començar des de assignació
+		text += printIdentSeparatorRow(" ");
+		text += printIdentSeparatorRow(CHR_BORDER);
+		text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1)+" "+CHR_BORDER+" "+StringUtils.rightPad("ACTUACIONS",COL_2+COL_3+COL_4+COL_5+3*GAP)+CHR_BORDER+"  "+System.lineSeparator();
+		text += printIdentSeparatorRow(CHR_BORDER);
+		for (int i = 1; i < seguiment.length; i++) {
+			Accio accio = seguiment[i];
+			if (accio != null) {
+				text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1)+" "+CHR_BORDER+" ";
+				text += StringUtils.center(sdf.format(accio.getData()), COL_2)+" "+CHR_BORDER+" ";
+				text += StringUtils.rightPad(accio.getUsuari().getNom(), COL_3+COL_4+COL_5+2*GAP)+CHR_BORDER+"  "+System.lineSeparator();
+
+				text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1)+" "+CHR_BORDER+" ";
+				text += StringUtils.repeat(" ", COL_2)+" "+StringUtils.repeat(CHR_BORDER, COL_3+COL_4+COL_5+3*GAP-1)+CHR_BORDER+"  "+System.lineSeparator();
+
+				String resumWrapped = WordUtils.wrap(accio.resum(), COL_3+COL_4+COL_5+2*GAP, "%%", true);
+				String[] resumArray = resumWrapped.split("%%");
+				for (int j = 0; j < resumArray.length; j++) {
+					resumArray[j] = "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1)+" "+CHR_BORDER+" "+StringUtils.repeat(" ", COL_2)+" "+CHR_BORDER+" "+
+							StringUtils.rightPad(resumArray[j],COL_3+COL_4+COL_5+2*GAP)+CHR_BORDER+"  ";
+				}
+				resumWrapped = StringUtils.join(resumArray, System.lineSeparator());
+				text += resumWrapped;
+
+				text += System.lineSeparator();
+				text += i+1 < seguiment.length && seguiment[i+1] == null?printSeparatorRow(CHR_BORDER):printIdentSeparatorRow(CHR_BORDER);
+			}
+		}
+
+		return text;
+!!!138363.java!!!	header() : String
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE, d MMMM 'de' yyyy'.'",new Locale("CA","ES"));
+		String text = "";
+		text += System.lineSeparator();
+		text += printSeparatorRow(CHR_BORDER);
+		text += printSeparatorRow(" ");
+		text += "  "+CHR_BORDER;
+		text += StringUtils.center("INFORME INCIDÈNCIES. "+StringUtils.capitalize(sdf.format(new Date())), W_TOTAL);
+		text += CHR_BORDER+"  "+System.lineSeparator();
+		text += printSeparatorRow(" ");
+		text += printSeparatorRow(CHR_BORDER);
+		text += printSeparatorRow(" ");
+		text += "  "+CHR_BORDER;
+		text += StringUtils.center("CATEGORIA", COL_1)+StringUtils.repeat(" ", GAP);
+		text += StringUtils.center("DATA", COL_2)+StringUtils.repeat(" ", GAP);
+		text += StringUtils.rightPad(StringUtils.abbreviate("EMPLEAT", COL_3), COL_3)+StringUtils.repeat(" ", GAP);
+		text += StringUtils.center("PRIORITAT", COL_4)+StringUtils.repeat(" ", GAP);
+		text += StringUtils.leftPad("ESTAT ", COL_5);
+		text += CHR_BORDER+"  "+System.lineSeparator();
+		text += printSeparatorRow(CHR_BORDER);
+
+		return text;
+!!!138491.java!!!	footer(in pendents : int, in assignats : int, in intervinguts : int, in tancats : int) : String
+		String text = "";
+		text += printSeparatorRow(" ");
+		text += printSeparatorRow(CHR_BORDER);
+
+		text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1+COL_2+COL_3+3*GAP)+StringUtils.leftPad("Pendents", COL_4);
+		text += " "+CHR_BORDER+" "+StringUtils.center(pendents+"", COL_5)+CHR_BORDER+"  "+System.lineSeparator();
+		text += printSeparatorRowFooter(CHR_BORDER);
+
+		text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1+COL_2+COL_3+3*GAP)+StringUtils.leftPad("Assignats", COL_4);
+		text += " "+CHR_BORDER+" "+StringUtils.center(assignats+"", COL_5)+CHR_BORDER+"  "+System.lineSeparator();
+		text += printSeparatorRowFooter(CHR_BORDER);
+
+		text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1+COL_2+COL_3+3*GAP)+StringUtils.leftPad("En procés", COL_4);
+		text += " "+CHR_BORDER+" "+StringUtils.center(intervinguts+"", COL_5)+CHR_BORDER+"  "+System.lineSeparator();
+		text += printSeparatorRowFooter(CHR_BORDER);
+
+		text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1+COL_2+COL_3+3*GAP)+StringUtils.leftPad("Tancats", COL_4);
+		text += " "+CHR_BORDER+" "+StringUtils.center(tancats+"", COL_5)+CHR_BORDER+"  "+System.lineSeparator();
+		text += printSeparatorRowFooter(CHR_BORDER);
+
+		text += printIdentEmptyRowFooter(CHR_BORDER);
+
+		text += "  "+CHR_BORDER+StringUtils.repeat(" ", COL_1+COL_2+COL_3+3*GAP)+StringUtils.leftPad("TOTAL", COL_4);
+		text += " "+CHR_BORDER+" "+StringUtils.center((pendents+assignats+intervinguts+tancats)+"", COL_5)+CHR_BORDER+"  "+System.lineSeparator();
+
+		text += printIdentEmptyRowFooter(CHR_BORDER);
+		text += printSeparatorRow(CHR_BORDER);
+
+		return text;
